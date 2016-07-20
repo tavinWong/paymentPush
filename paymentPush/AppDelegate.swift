@@ -17,35 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         registerForPushNotifications(application)
-        /**
-        // Actions
-        let firstAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        firstAction.identifier = "FIRST_ACTION"
-        firstAction.title = "Commit"
-        firstAction.activationMode = .Foreground
-        
-        let secondAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        secondAction.identifier = "SECOND_ACTION"
-        secondAction.title = "Reject"
-        secondAction.activationMode = .Foreground
-        // category
-        
-        let firstCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
-        firstCategory.identifier = "PAYMENT_CATEGORY"
-        firstCategory.setActions([firstAction, secondAction], forContext: .Default)
 
-        
-        // NSSet of all our categories
-        
-        
-        let mySettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: [firstCategory])
-        
-        UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
- 
-        **/
         // Check if launched from notification
         // 1
-
+        /**
         if let notification = launchOptions?[UIApplicationLaunchOptionsRemoteNotificationKey] as? [String: AnyObject] {
             // 2
             
@@ -57,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("nothing in the launchoption")
         }
 
-        
+        **/
         return true
     }
     
@@ -68,11 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          completionHandler: (() -> Void))
     {
         
-        if (identifier == "FIRST_ACTION")
+        if (identifier == "VIEW_IDENTIFIER")
         {
             NSNotificationCenter.defaultCenter().postNotificationName("actionOnePressed", object: nil)
         }
-        else if (identifier == "SECOND_ACTION")
+        else if (identifier == "CANCEL_IDENTIFIER")
         {
             NSNotificationCenter.defaultCenter().postNotificationName("actionTwoPressed", object: nil)
         }
@@ -159,9 +134,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         viewAction.title = "View"
         viewAction.activationMode = .Foreground
         
+        let cancelAction = UIMutableUserNotificationAction()
+        viewAction.identifier = "CANCEL_IDENTIFIER"
+        viewAction.title = "Cancel"
+        viewAction.activationMode = .Foreground
+        
         let paymentCategory = UIMutableUserNotificationCategory()
         paymentCategory.identifier = "PAYMENT_CATEGORY"
-        paymentCategory.setActions([viewAction], forContext: .Default)
+        paymentCategory.setActions([viewAction, cancelAction], forContext: .Default)
         
         let notificationSettings = UIUserNotificationSettings(
             forTypes: [.Badge, .Sound, .Alert], categories: [paymentCategory])

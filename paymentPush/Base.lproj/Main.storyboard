@@ -128,6 +128,13 @@
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KrY-aB-bvx">
+                                    <rect key="frame" x="107" y="90" width="80" height="32"/>
+                                    <state key="normal" title="Clear All"/>
+                                    <connections>
+                                        <action selector="clearBtn:" destination="0E5-Fb-vLH" eventType="touchUpInside" id="N8R-MZ-twe"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.031372549019607843" green="0.12549019607843137" blue="0.3411764705882353" alpha="1" colorSpace="calibratedRGB"/>
                         </view>
@@ -178,6 +185,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" systemItem="mostRecent" id="3YY-lX-mMF"/>
+                    <connections>
+                        <outlet property="remainBalance" destination="mAg-1C-q60" id="P8S-Ub-gLU"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWS-hR-Wfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
